@@ -16,3 +16,5 @@ And to actually start run this command:
 python3 main.py
 
 And if you have the extension python-is-python3, just remove the 3.
+
+Trello Board: https://trello.com/b/tlewtIcD/an-rpg
