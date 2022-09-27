@@ -4,6 +4,7 @@ But first, you must establish a virtual environment (wow, so fancy)
 to do this run the following commands in the terminal:
 
 python -m venv env
+
 source env/bin/activate
 
 After doing that you must install string-color by doing this command:
