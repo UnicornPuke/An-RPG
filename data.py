@@ -127,3 +127,5 @@ class rat:
 	defense = 1
 	magic = 1
 	luck = 1
+
+print(rat.hp)
