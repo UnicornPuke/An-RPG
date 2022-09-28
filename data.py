@@ -87,3 +87,43 @@ class player:
 	defense = 20
 	magic = 20
 	luck = 1
+
+class enemy:
+	maxhp = 0
+	hp = 0
+	attack = 0
+	defense = 0
+	magic = 0
+	luck = 0
+
+class dirt_monster:
+	maxhp = 10
+	hp = 10
+	attack = 7
+	defense = 8
+	magic = 3
+	luck = 1
+
+class goblin:
+	maxhp = 15
+	hp = 15
+	attack = 15
+	defense = 15
+	magic = 15
+	luck = 2
+
+class grass_monster:
+	maxhp = 10
+	hp = 10
+	attack = 7
+	defense = 8
+	magic = 3
+	luck = 1
+
+class rat:
+	maxhp = 1
+	hp = 1
+	attack = 1
+	defense = 1
+	magic = 1
+	luck = 1
