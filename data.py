@@ -809,7 +809,6 @@ def combat():
 		print("You win!")
 		time.sleep(2)
 		resc()
-		shlep = input(jeep)
 		
 		if shlep == "stats":
 			stats()
