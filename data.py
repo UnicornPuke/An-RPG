@@ -55,7 +55,7 @@ def step():
 	global level
 	global token
 	global maxp
-	global shtep
+	mashp = level
 	maxp = 95 + level * 5
 	mincrease = random.randint(3,6)
 	xincrease = random.randint(2,4)
@@ -68,15 +68,35 @@ def step():
 	for x in range(0, 1000):
 		print("")
 	
+	if mashp != level:
+		print("You leveled up!")
+		time.sleep(1.2)
+		for x in range(0, 1000):
+			print("")
+		stats()
+		lvlup = input("Choose a stat to boost, Defemse, Magic, Luck, Max HP, or Attack. [d/m/l/hp/a (no caps)]")
+		
+		if lvlup == "d":
+			player.defense += 6
+		elif lvlup == "m":
+			player.magic += 6
+		elif lvlup == "l":
+			player.luck += 1
+			if player.luck > 10:
+				player.luck = 10
+		elif lvlup == "hp":
+			player.maxhp += 3
+			player.hp = player.maxhp
+		else:
+			player.attack += 6
+
 	print("Level", level, "XP:", xp, "/ 100", "      Money:", money)
 	print("")
 	print("")
 	print("")
 	print("")
 	if tutorial == False:
-		shlep = input(shtep)
-		if shlep == "shop":
-			shop()
+		sheep()
 
 def stats():
 	time.sleep(0.5)
@@ -111,15 +131,6 @@ class enemy:
 	defense = 0
 	magic = 0
 	luck = 0
-
-class tutor:
-	maxhp = 10
-	hp = 10
-	attack = 10
-	defense = 10
-	magic = 10
-	luck = 0
-
 
 class dirt_monster:
 	maxhp = 10
@@ -693,9 +704,17 @@ def shop():
 			time.sleep(0.1)
 		else:
 			shop()
+		resc()
+		shlep = input(jeep)
+		
+		if shlep == "stats":
+			stats()
+		if shlep == "shop":
+			shop()
 	print("")
 	print("Goodbye! Happy Shopping!")
 	time.sleep(2)
+	
 
 def combat():
 	for x in range(0, 1000):
@@ -790,6 +809,12 @@ def combat():
 		print("You win!")
 		time.sleep(2)
 		resc()
+		shlep = input(jeep)
+		
+		if shlep == "stats":
+			stats()
+		if shlep == "shop":
+			shop()
 
 
 print("booting...")

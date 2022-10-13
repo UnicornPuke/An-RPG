@@ -1,7 +1,11 @@
-First release - 0.1.0
+Update Terra - 1.0.0
 
 Changes:
 
-    The ability to play the game (this is literally the first release.)
+    23 Items are in the shop.
     
-    Only tutorial is available. :(
+    Full combat access.
+
+    Bug fix for after the name asking.
+
+    1000 steps can be stepped post-tutorial.
