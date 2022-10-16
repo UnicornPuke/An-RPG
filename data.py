@@ -1,7 +1,7 @@
 import time
 import random
 from stringcolor import *
-from steps import *
+import steps
 
 money = 0
 level = 1
@@ -39,17 +39,72 @@ amethystconfirm = False
 pineconeconfirm = False
 grandconfirm = False
 
+player = {
+  "maxhp": 20,
+  "hp": 20,
+  "attack": 20,
+  "defense": 20,
+  "magic": 20,
+  "luck": 1
+}
+
+enemy = {
+  "maxhp": 0,
+  "hp": 0,
+  "attack": 0,
+  "defense": 0,
+  "magic": 0,
+  "luck": 0
+}
+
+dirt_monster = {
+  	"maxhp": 20,
+	"hp": 20,
+	"attack": 15,
+	"defense": 17,
+	"magic": 10,
+	"luck": 1
+}
+
+goblin = {
+  	"maxhp": 20,
+	"hp": 20,
+	"attack": 20,
+	"defense": 20,
+	"magic": 20,
+	"luck": 2
+}
+
+grass_monster = {
+  	"maxhp": 20,
+	"hp": 20,
+	"attack": 15,
+	"defense": 17,
+	"magic": 10,
+	"luck": 1
+}
+
+rat = {
+  	"maxhp": 1,
+	"hp": 1,
+	"attack": 1,
+	"defense": 1,
+	"magic": 1,
+	"luck": 1
+}
+
 def resc():
 	for x in range(0, 1000):
 		print("")
 	
-	print("Level", level, "XP:", xp, "/ 100", "      Money:", money)
+	print("Level", level, "XP:", xp, "/ 100        ", "Health: ", player["hp"], "/", player["maxhp"] , "      Money:", money)
 	print("")
 	print("")
 	print("")
 	print("")
 
 def step():
+	global tutorial
 	global money
 	global xp
 	global level
@@ -74,99 +129,56 @@ def step():
 		for x in range(0, 1000):
 			print("")
 		stats()
+		print("")
 		lvlup = input("Choose a stat to boost, Defemse, Magic, Luck, Max HP, or Attack. [d/m/l/hp/a (no caps)]")
 		
 		if lvlup == "d":
-			player.defense += 6
+			player["defense"] += 6
 		elif lvlup == "m":
-			player.magic += 6
+			player["magic"] += 6
 		elif lvlup == "l":
-			player.luck += 1
-			if player.luck > 10:
-				player.luck = 10
+			player["luck"] += 1
+			if player["luck"] > 10:
+				player["luck"] = 10
 		elif lvlup == "hp":
-			player.maxhp += 3
-			player.hp = player.maxhp
+			player["maxhp"] += 3
+			player["hp"] = player["maxhp"]
 		else:
-			player.attack += 6
+			player["attack"] += 6
+	
+	for x in range(0, 1000):
+		print("")
 
-	print("Level", level, "XP:", xp, "/ 100", "      Money:", money)
+	print("Level", level, "XP:", xp, "/ 100        ", "Health: ", player["hp"], "/", player["maxhp"] , "      Money:", money)
 	print("")
 	print("")
 	print("")
 	print("")
-	if tutorial == False:
-		sheep()
 
 def stats():
 	time.sleep(0.5)
 	print("")
-	print("HP:", player.maxhp)
+	print("HP:", player["maxhp"])
 	time.sleep(0.5)
 	print("")
-	print("Attack:", player.attack)
+	print("Attack:", player["attack"])
 	time.sleep(0.5)
 	print("")
-	print("Defense:", player.defense)
+	print("Defense:", player["defense"])
 	time.sleep(0.5)
 	print("")
-	print("Magic:", player.magic)
+	print("Magic:", player["magic"])
 	time.sleep(0.5)
 	print("")
-	print("Luck:", player.luck,"%")
-
-
-class player:
-	maxhp = 20
-	hp = 20
-	attack = 20
-	defense = 20
-	magic = 20
-	luck = 1
-
-class enemy:
-	maxhp = 0
-	hp = 0
-	attack = 0
-	defense = 0
-	magic = 0
-	luck = 0
-
-class dirt_monster:
-	maxhp = 10
-	hp = 10
-	attack = 7
-	defense = 8
-	magic = 3
-	luck = 1
-
-class goblin:
-	maxhp = 15
-	hp = 15
-	attack = 15
-	defense = 15
-	magic = 15
-	luck = 2
-
-class grass_monster:
-	maxhp = 10
-	hp = 10
-	attack = 7
-	defense = 8
-	magic = 3
-	luck = 1
-
-class rat:
-	maxhp = 1
-	hp = 1
-	attack = 1
-	defense = 1
-	magic = 1
-	luck = 1
+	print("Luck:", player["luck"],"%")
+	time.sleep(1)
+	print("")
+	input("Click enter to move on. ")
 
 def shop():
 	global tutorial
 	global money
+	global jeep
 	global player
 	global wincrease
 	global aincrease
@@ -221,7 +233,7 @@ def shop():
 			if sloppy == "stick":
 				money -= 15
 				wincrease = 3
-				player.attack += wincrease
+				player["attack"] += wincrease
 			else:
 				print("You have failed the game, sorry.")
 				exit()	  				
@@ -231,6 +243,8 @@ def shop():
 	else:
 		shopsy = input("Choose your item, or write 'exit' to leave. (no caps) ")
 		if shopsy == "weapons":
+			for x in range(0, 1000):
+				print("")
 			print(cs("Stick BOUGHT", "orange3"))
 			print("")
 			if grassconfirm == True:
@@ -277,8 +291,8 @@ def shop():
 					else:
 						money -= 50
 						wincrease = 6
-						player.attack += wincrease
-						player.defense += 2
+						player["attack"] += wincrease
+						player["defense"] += 2
 						grassconfirm = True
 			elif sloppy == "leaf sword":
 				print("Sorry, unfortunately, you have already purchased this item.")
@@ -293,8 +307,8 @@ def shop():
 					else:
 						money -= 50
 						wincrease = 6
-						player.attack += wincrease
-						player.magic += 2
+						player["attack"] += wincrease
+						player["magic"] += 2
 						leafconfirm = True
 			elif sloppy == "stone sword":
 				if stoneconfirm == True:
@@ -307,7 +321,7 @@ def shop():
 					else:
 						money -= 130
 						wincrease = 10
-						player.attack += wincrease
+						player["attack"] += wincrease
 						stoneconfirm = True
 			elif sloppy == "ruby sword":
 				if rubyconfirm == True:
@@ -320,9 +334,9 @@ def shop():
 					else:
 						money -= 250
 						wincrease = 15
-						player.attack += wincrease
-						player.maxhp += 2
-						player.hp = player.maxhp
+						player["attack"] += wincrease
+						player["maxhp"] += 2
+						player["hp"] = player["maxhp"]
 						rubyconfirm = True
 			elif sloppy == "titanium sword":
 				if titanconfirm == True:
@@ -335,7 +349,7 @@ def shop():
 					else:
 						money -= 525
 						wincrease = 19
-						player.attack += wincrease
+						player["attack"] += wincrease
 						titanconfirm = True
 			elif sloppy == "holy sword":
 				if holyconfirm == True:
@@ -348,8 +362,8 @@ def shop():
 						print("Sorry you do not have enough money.")
 					else:
 						wincrease = 32
-						player.attack += wincrease
-						player.magic += 6
+						player["attack"] += wincrease
+						player["magic"] += 6
 						holyconfirm = True
 			else:
 				print("")
@@ -359,6 +373,8 @@ def shop():
 					print("")
 				shop()
 		elif shopsy == "armor":
+			for x in range(0, 1000):
+				print("")
 			if tconfirm == True:
 				print(cs("T-Shirt BOUGHT", "lightcyan"))
 			else:
@@ -406,7 +422,7 @@ def shop():
 					else:
 						money -= 30
 						aincrease = 5
-						player.defense += aincrease
+						player["defense"] += aincrease
 						tconfirm = True
 			elif sloppy == "earth armor":
 				if earthconfirm == True:
@@ -419,8 +435,8 @@ def shop():
 					else:
 						money -= 110
 						aincrease = 11
-						player.defense += aincrease
-						player.attack += 1
+						player["defense"] += aincrease
+						player["attack"] += 1
 						earthconfirm = True
 			elif sloppy == "iron armor":
 				if ironconfirm == True:
@@ -433,7 +449,7 @@ def shop():
 					else:
 						money -= 200
 						aincrease = 15
-						player.defense += aincrease
+						player["defense"] += aincrease
 						ironconfirm = True
 			elif sloppy == "chainmail":
 				if chainconfirm == True:
@@ -446,7 +462,7 @@ def shop():
 					else:
 						money -= 325
 						aincrease = 10
-						player.defense += aincrease
+						player["defense"] += aincrease
 						chainconfirm = True
 			elif sloppy == "emerald armor":
 				if emeraldconfirm == True:
@@ -459,9 +475,9 @@ def shop():
 					else:
 						money -= 420
 						aincrease = 17
-						player.defense += aincrease
-						player.maxhp += 1
-						player.hp = player.maxhp
+						player["defense"] += aincrease
+						player["maxhp"] += 1
+						player["hp"] = player["maxhp"]
 						emeraldconfirm = True
 			elif sloppy == "maple armor":
 				if mapleconfirm == True:
@@ -474,11 +490,11 @@ def shop():
 					else:
 						money -= 585
 						aincrease = 23
-						player.defense += aincrease
-						player.maxhp += 1
-						player.hp = player.maxhp
-						player.magic += 1
-						player.attack += 1
+						player["defense"] += aincrease
+						player["maxhp"] += 1
+						player["hp"] = player["maxhp"]
+						player["magic"] += 1
+						player["attack"] += 1
 						mapleconfirm = True
 			elif sloppy == "soul armor":
 				if soulconfirm == True:
@@ -491,8 +507,8 @@ def shop():
 					else:
 						money -= 1000
 						aincrease = 40
-						player.defense += aincrease
-						player.maxhp += 6
+						player["defense"] += aincrease
+						player["maxhp"] += 6
 						soulconfirm = True
 			else:
 				print("")
@@ -502,6 +518,8 @@ def shop():
 					print("")
 				shop()
 		elif shopsy == "wands":
+			for x in range(0, 1000):
+				print("")
 			if basicconfirm == True:
 				print(cs("Basic Wand BOUGHT", "lightgoldenrod3"))
 			else:
@@ -549,7 +567,7 @@ def shop():
 					else:
 						money -= 35
 						mincrease = 6
-						player.magic += mincrease
+						player["magic"] += mincrease
 						basicconfirm = True
 			elif sloppy == "star wand":
 				if starconfirm == True:
@@ -562,8 +580,8 @@ def shop():
 					else:
 						money -= 120
 						mincrease = 12
-						player.magic += mincrease
-						player.defense += 1
+						player["magic"] += mincrease
+						player["defense"] += 1
 						starconfirm = True
 			elif sloppy == "flower wand":
 				if flowerconfirm == True:
@@ -576,9 +594,9 @@ def shop():
 					else:
 						money -= 195
 						mincrease = 16
-						player.magic += mincrease
-						player.maxhp += 2
-						player.hp = player.maxhp
+						player["magic"] += mincrease
+						player["maxhp"] += 2
+						player["hp"] = player["maxhp"]
 						flowerconfirm = True
 			elif sloppy == "gold wand":
 				if goldconfirm == True:
@@ -591,7 +609,7 @@ def shop():
 					else:
 						money -= 330
 						mincrease = 21
-						player.magic += mincrease
+						player["magic"] += mincrease
 						goldconfirm = True
 			elif sloppy == "amethyst wand":
 				if amethystconfirm == True:
@@ -604,10 +622,10 @@ def shop():
 					else:
 						money -= 450
 						mincrease = 25
-						player.magic += mincrease
-						player.maxhp += 1
-						player.hp = player.maxhp
-						player.magic += 2
+						player["magic"] += mincrease
+						player["maxhp"] += 1
+						player["hp"] = player["maxhp"]
+						player["magic"] += 2
 						amethystconfirm = True
 			elif sloppy == "pinecone wand":
 				if pineconeconfirm == True:
@@ -620,7 +638,7 @@ def shop():
 					else:
 						money -= 655
 						mincrease = 28
-						player.magic += mincrease
+						player["magic"] += mincrease
 						pineconeconfirm = True
 			elif sloppy == "grand staff":
 				if grandconfirm == True:
@@ -633,8 +651,8 @@ def shop():
 					else:
 						money -= 950
 						mincrease = 31
-						player.magic += mincrease
-						player.maxhp += 6
+						player["magic"] += mincrease
+						player["maxhp"] += 6
 						holyconfirm = True
 			else:
 				print("")
@@ -644,6 +662,8 @@ def shop():
 					print("")
 				shop()
 		elif shopsy == "charms":
+			for x in range(0, 1000):
+				print("")
 			print("Remember, you can only buy one charm!")
 			print("")
 			if charmconfirm == True:
@@ -666,10 +686,10 @@ def shop():
 				else:
 					money -= 400
 					cincrease = 1
-					player.luck += cincrease
-					if player.luck < 10:
-						player.luck = 10
-					player.defense += 10
+					player["luck"] += cincrease
+					if player["luck"] < 10:
+						player["luck"] = 10
+					player["defense"] += 10
 					charmconfirm = True
 			elif sloppy == "star charm":
 				if money < 400:
@@ -677,10 +697,10 @@ def shop():
 				else:
 					money -= 400
 					cincrease = 1
-					player.luck += cincrease
-					if player.luck < 10:
-						player.luck = 10
-					player.magic += 10
+					player["luck"] += cincrease
+					if player["luck"] < 10:
+						player["luck"] = 10
+					player["magic"] += 10
 					charmconfirm = True
 			elif sloppy == "glass charm":
 				if money < 400:
@@ -688,10 +708,10 @@ def shop():
 				else:
 					money -= 400
 					cincrease = 1
-					player.luck += cincrease
-					if player.luck < 10:
-						player.luck = 10
-					player.attack += 10
+					player["luck"] += cincrease
+					if player["luck"] < 10:
+						player["luck"] = 10
+					player["attack"] += 10
 					charmconfirm = True
 			else:
 				print("")
@@ -705,15 +725,8 @@ def shop():
 		else:
 			shop()
 		resc()
-		shlep = input(jeep)
-		
-		if shlep == "stats":
-			stats()
-		if shlep == "shop":
-			shop()
-	print("")
-	print("Goodbye! Happy Shopping!")
-	time.sleep(2)
+		input("Click enter to move on.")
+
 	
 
 def combat():
@@ -723,59 +736,69 @@ def combat():
 	global player
 	if tutorial == False:
 		for x in range(0, 1000):
-			print("Opponent:", enemy.hp, "/", enemy.maxhp, "                                You:", player.hp, "/", player.maxhp)
+			for x in range(0, 1000):
+				print("")
+			print("Opponent:", enemy["hp"], "/", enemy["maxhp"], "                                You:", player["hp"], "/", player["maxhp"])
 			print("")
 			print("")
 			print("")
 			print("")
 			comresp = input("Magic/Attack/Heal [m/a/h (no caps)] ")
 			if comresp == "m":
-				mag = round(player.magic / 4) - round(enemy.defense / 10)
+				mag = round(player["magic"] / 4) - round(enemy["defense"] / 10)
+				if mag > 0:
+					mag = 0
 				crit = random.randint(1, 100)
-				if crit <= player.luck:
+				if crit <= player["luck"]:
 					mag += round(mag / 2)
-				enemy.hp -= mag
+				enemy["hp"] -= mag
 			elif comresp == "a":
-				atta = round(player.attack / 4) - round(enemy.defense / 10)
+				atta = round(player["attack"] / 4) - round(enemy["defense"] / 10)
+				if atta > 0:
+					atta = 0
 				crit = random.randint(1, 100)
-				if crit <= player.luck:
+				if crit <= player["luck"]:
 					atta += round(atta / 2)
-				enemy.hp -= atta
+				enemy["hp"] -= atta
 			else:
-				player.hp += 4
-				if player.hp > player.maxhp:
-					player.hp = player.maxhp
+				player["hp"] += 4
+				if player["hp"] > player["maxhp"]:
+					player["hp"] = player["maxhp"]
 
 			enemydis = random.randint(1,3)
 			if enemydis == 1:
-				mag = round(enemy.magic / 4) - round(player.defense / 10)
+				mag = round(enemy["magic"] / 4) - round(player["defense"] / 10)
+				if mag > 0:
+					mag = 0
 				crit = random.randint(1, 100)
-				if crit <= enemy.luck:
+				if crit <= enemy["luck"]:
 					mag += round(mag / 2)
-				player.hp -= mag
+				player["hp"] -= mag
 			elif enemydis == 2:
-				atta = round(enemy.attack / 4) - round(player.defense / 10)
+				atta = round(enemy["attack"] / 4) - round(player["defense"] / 10)
+				if atta > 0:
+					atta = 0
 				crit = random.randint(1, 100)
-				if crit <= enemy.luck:
+				if crit <= enemy["luck"]:
 					atta += round(atta / 2)
-				player.hp -= atta
+				player["hp"] -= atta
 			elif enemydis == 3:
-				enemy.hp += 2
-				if enemy.hp > enemy.maxhp:
-					enemy.hp = enemy.maxhp
+				enemy["hp"] += 2
+				if enemy["hp"] > enemy["maxhp"]:
+					enemy["hp"] = enemy["maxhp"]
 
-			if player.hp >= 0:
+			if player["hp"] <= 0:
 				print("")
 				print(cs("You died.", "red"))
 				exit()
-			elif enemy.hp >= 0:
+			elif enemy["hp"] <= 0:
 				break
-
+		print("")
 		print("You have won the battle.")
 		print("")
 		time.sleep(2)
 		resc()
-		input(shtep)
+		input("Click enter to move on.")
 	else:
 		print("Opponent: 10 / 10                                 You: 20 / 20")
 		print("")
@@ -810,10 +833,6 @@ def combat():
 		time.sleep(2)
 		resc()
 		
-		if shlep == "stats":
-			stats()
-		if shlep == "shop":
-			shop()
 
 
 print("booting...")
