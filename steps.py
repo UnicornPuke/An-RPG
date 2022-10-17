@@ -8,7 +8,7 @@ shtep = 0
 def sheep():
     global shtep
     
-    shtep = random.randint(1,100)
+    shtep = random.randint(1,170)
 
     if shtep == 1 or shtep == 2 or shtep == 43:
         data.enemy = data.rat
@@ -169,7 +169,7 @@ def sheep():
         if shlep == "shop":
             data.shop()
     elif shtep == 61 or shtep == 62:
-        jeep = "You hitup your friend Jimmy...by carrier pigeon. "
+        jeep = "You hit up your friend Jimmy...by carrier pigeon. "
         shlep = input(jeep)
         if shlep == "stats":
             data.stats()
@@ -268,6 +268,200 @@ def sheep():
             data.shop()
     elif shtep == 98 or shtep == 99 or shtep == 100:
         jeep = "You propose to the love of your life, a cactus. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 101 or shtep == 102:
+        data.enemy = data.hydro_mage
+        input("Some old guy says he's a mage and that you're on his territory. ")
+        data.combat()
+    elif shtep == 103 or shtep == 104 or shtep == 105:
+        data.enemy = data.shark
+        input("A shark tries to bite you! ")
+        data.combat()
+    elif shtep == 106 or shtep == 107:
+        data.enemy = data.salmon_school
+        input("Remember that piece of salmon you ate 2 years ago? Yeah, his friends are coming after you. ")
+        data.combat()
+    elif shtep == 108 or shtep == 109 or shtep == 110:
+        jeep = "Some 7 year old squirts you with a water gun. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 111 or shtep == 112:
+        jeep = "You miss your mommy. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 113 or shtep == 114 or shtep == 115:
+        jeep = "You eat some [REDACTED] brand cereal with some [REDACTED] brand granola bars. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 116 or shtep == 117:
+        jeep = "You think of a really good comeback of an argument you had 7 years ago. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 118 or shtep == 119 or shtep == 120:
+        jeep = "You read an article in the paper about a tsunami washing over a large city. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 121 or shtep == 122:
+        jeep = "You find 20 dollars on the ground. "
+        data.money += 20
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 123 or shtep == 124 or shtep == 125:
+        jeep = "You walk. (I'm running out of ideas, okay?) "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 126 or shtep == 127:
+        jeep = "You collect an XP orb. "
+        data.xp += 20
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 128 or shtep == 129 or shtep == 130:
+        jeep = "You trip and fall down the stairs for 2 minutes straight. "
+        data.player["hp"] -= 3
+        if data.player["hp"] <= 0:
+            print("")
+            print(cs("You died.", "red"))
+            exit()
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 131 or shtep == 132:
+        jeep = "You get your nails done. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 133 or shtep == 134 or shtep == 135:
+        jeep = "Hey! Wake up! Stop sleeping! "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 136 or shtep == 137:
+        jeep = "A seaman shouts at you about something related to you stealing his catch. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 138 or shtep == 139 or shtep == 140:
+        jeep = "You hear beautiful piano music. You later realise that a parakeet is singing. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 141 or shtep == 142:
+        jeep = "Some sailors start singing a sea chanty and you join in. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 143 or shtep == 144 or shtep == 145:
+        jeep = "I'm bored! Can you be more interesting? "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 146 or shtep == 147:
+        jeep = "A clown is juggling balls unicycling around town. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 148 or shtep == 149 or shtep == 150:
+        jeep = "You enter a mall and you see Jerry and you run up for a hug. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 151 or shtep == 152:
+        jeep = "You see a birthday party for a 6 year old. They think that you are the 6 year old, and pull you over. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 153 or shtep == 154 or shtep == 155:
+        jeep = "A person eats an apple and collapses. Then you see a witch grinning in the background. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 156 or shtep == 157:
+        jeep = "You get on a sailboat. The sailors kick you out, since this is not your boat. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 158 or shtep == 159 or shtep == 160:
+        jeep = "You break out into a spontaneous musical number. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 161 or shtep == 162:
+        jeep = "The president awards you a medal of honor. Then he says 'Whoops!' and takes it from you. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 163 or shtep == 164 or shtep == 165:
+        jeep = "The moon shines on you and only you. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 166 or shtep == 167:
+        jeep = "Hmmm Hmm! Oh, sorry I was humming. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 168 or shtep == 169 or shtep == 170:
+        jeep = "You dance randomly. "
         shlep = input(jeep)
         if shlep == "stats":
             data.stats()

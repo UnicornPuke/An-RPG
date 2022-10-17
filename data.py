@@ -38,30 +38,33 @@ goldconfirm = False
 amethystconfirm = False
 pineconeconfirm = False
 grandconfirm = False
+iceconfirm = False
+coralconfirm = False
+waterconfirm = False
 
 player = {
-  "maxhp": 20,
-  "hp": 20,
-  "attack": 20,
-  "defense": 20,
-  "magic": 20,
-  "luck": 1
+	"maxhp": 20,
+	"hp": 20,
+	"attack": 20,
+	"defense": 20,
+	"magic": 20,
+	"luck": 1
 }
 
 enemy = {
-  "maxhp": 0,
-  "hp": 0,
-  "attack": 0,
-  "defense": 0,
-  "magic": 0,
-  "luck": 0
+	"maxhp": 0,
+	"hp": 0,
+	"attack": 0,
+	"defense": 0,
+	"magic": 0,
+	"luck": 0
 }
 
 dirt_monster = {
-  	"maxhp": 20,
+	"maxhp": 20,
 	"hp": 20,
-	"attack": 15,
-	"defense": 17,
+	"attack": 21,
+	"defense": 22,
 	"magic": 10,
 	"luck": 1
 }
@@ -78,8 +81,8 @@ goblin = {
 grass_monster = {
   	"maxhp": 20,
 	"hp": 20,
-	"attack": 15,
-	"defense": 17,
+	"attack": 21,
+	"defense": 22,
 	"magic": 10,
 	"luck": 1
 }
@@ -91,6 +94,33 @@ rat = {
 	"defense": 1,
 	"magic": 1,
 	"luck": 1
+}
+
+hydro_mage = {
+  	"maxhp": 25,
+	"hp": 25,
+	"attack": 18,
+	"defense": 22,
+	"magic": 30,
+	"luck": 3
+}
+
+shark = {
+  	"maxhp": 30,
+	"hp": 29,
+	"attack": 20,
+	"defense": 25,
+	"magic": 15,
+	"luck": 1
+}
+
+salmon_school = {
+  	"maxhp": 25,
+	"hp": 25,
+	"attack": 18,
+	"defense": 20,
+	"magic": 16,
+	"luck": 2
 }
 
 def resc():
@@ -185,6 +215,9 @@ def shop():
 	global mincrease
 	global cincrease
 	global grassconfirm
+	global iceconfirm
+	global coralconfirm
+	global waterconfirm
 	global tconfirm
 	global earthconfirm
 	global ironconfirm
@@ -257,6 +290,11 @@ def shop():
 			else:
 				print(cs("Leaf Sword $50", "darkgoldenrod"))
 			print("")
+			if iceconfirm == True:
+				print(cs("Ice Spear BOUGHT", "cyan"))
+			else:
+				print(cs("Ice Spear $65", "cyan"))
+			print("")
 			if stoneconfirm == True:
 				print(cs("Stone Sword BOUGHT", "lightgrey12"))
 			else:
@@ -294,9 +332,21 @@ def shop():
 						player["attack"] += wincrease
 						player["defense"] += 2
 						grassconfirm = True
-			elif sloppy == "leaf sword":
-				print("Sorry, unfortunately, you have already purchased this item.")
-			if sloppy == "grass sword":
+			if sloppy == "ice spear":
+				if iceconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 65:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 65
+						wincrease = 7
+						player["attack"] += wincrease
+						player["magic"] += 3
+						grassconfirm = True
+			if sloppy == "leaf sword":
 				if leafconfirm == True:
 					print("")
 					print("Sorry, unfortunately, you have already purchased this item.")
@@ -540,6 +590,16 @@ def shop():
 			else:
 				print(cs("Gold Wand $330", "gold"))
 			print("")
+			if coralconfirm == True:
+				print(cs("Coral Wand BOUGHT", "pink5"))	
+			else:
+				print(cs("Coral Wand $400", "pink5"))
+			print("")
+			if waterconfirm == True:
+				print(cs("Water Wand BOUGHT", "blue3"))	
+			else:
+				print(cs("Water Wand $400", "blue3"))
+			print("")
 			if amethystconfirm == True:
 				print(cs("Amethyst Wand BOUGHT", "mediumpurple"))
 			else:
@@ -611,6 +671,34 @@ def shop():
 						mincrease = 21
 						player["magic"] += mincrease
 						goldconfirm = True
+			elif sloppy == "coral wand":
+				if coralconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 400:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 400
+						mincrease = 24
+						player["magic"] += mincrease
+						player["defense"] += 3
+						coralconfirm = True
+			elif sloppy == "water wand":
+				if waterconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 400:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 400
+						mincrease = 24
+						player["magic"] += mincrease
+						player["attack"] += 3
+						coralconfirm = True
 			elif sloppy == "amethyst wand":
 				if amethystconfirm == True:
 					print("")
@@ -673,6 +761,8 @@ def shop():
 				print("")
 				print(cs("Glass Charm $400", "violet"))
 				print("")
+				print(cs("Aqua Charm $400", "blue"))
+				print("")
 				sloppy = input("Choose you charm (no caps) ")
 			else:
 				print("YOU HAVE USED YOUR ONE CHARM PURCHASE.")
@@ -713,6 +803,18 @@ def shop():
 						player["luck"] = 10
 					player["attack"] += 10
 					charmconfirm = True
+			elif sloppy == "aqua charm":
+				if money < 400:
+					print("Sorry you do not have enough money.")
+				else:
+					money -= 400
+					cincrease = 1
+					player["luck"] += cincrease
+					if player["luck"] < 10:
+						player["luck"] = 10
+					player["magic"] += 5
+					player["attack"] += 5
+					charmconfirm = True
 			else:
 				print("")
 				print("What do you mean?")
@@ -746,7 +848,7 @@ def combat():
 			comresp = input("Magic/Attack/Heal [m/a/h (no caps)] ")
 			if comresp == "m":
 				mag = round(player["magic"] / 4) - round(enemy["defense"] / 10)
-				if mag > 0:
+				if mag < 0:
 					mag = 0
 				crit = random.randint(1, 100)
 				if crit <= player["luck"]:
@@ -754,7 +856,7 @@ def combat():
 				enemy["hp"] -= mag
 			elif comresp == "a":
 				atta = round(player["attack"] / 4) - round(enemy["defense"] / 10)
-				if atta > 0:
+				if atta < 0:
 					atta = 0
 				crit = random.randint(1, 100)
 				if crit <= player["luck"]:
@@ -768,7 +870,7 @@ def combat():
 			enemydis = random.randint(1,3)
 			if enemydis == 1:
 				mag = round(enemy["magic"] / 4) - round(player["defense"] / 10)
-				if mag > 0:
+				if mag < 0:
 					mag = 0
 				crit = random.randint(1, 100)
 				if crit <= enemy["luck"]:
@@ -776,7 +878,7 @@ def combat():
 				player["hp"] -= mag
 			elif enemydis == 2:
 				atta = round(enemy["attack"] / 4) - round(player["defense"] / 10)
-				if atta > 0:
+				if atta < 0:
 					atta = 0
 				crit = random.randint(1, 100)
 				if crit <= enemy["luck"]:
@@ -795,6 +897,8 @@ def combat():
 				break
 		print("")
 		print("You have won the battle.")
+		money += 50
+		xp += 15
 		print("")
 		time.sleep(2)
 		resc()
