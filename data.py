@@ -41,6 +41,7 @@ grandconfirm = False
 iceconfirm = False
 coralconfirm = False
 waterconfirm = False
+obsidianconfirm = False
 
 player = {
 	"maxhp": 20,
@@ -75,6 +76,15 @@ goblin = {
 	"attack": 20,
 	"defense": 20,
 	"magic": 20,
+	"luck": 2
+}
+
+zombie = {
+  	"maxhp": 20,
+	"hp": 20,
+	"attack": 17,
+	"defense": 17,
+	"magic": 26,
 	"luck": 2
 }
 
@@ -216,6 +226,7 @@ def shop():
 	global cincrease
 	global grassconfirm
 	global iceconfirm
+	global leafconfirm
 	global coralconfirm
 	global waterconfirm
 	global tconfirm
@@ -232,6 +243,7 @@ def shop():
 	global amethystconfirm
 	global pineconeconfirm
 	global grandconfirm
+	global obsidianconfirm
 
 	for x in range(0, 1000):
 		print("")
@@ -281,9 +293,9 @@ def shop():
 			print(cs("Stick BOUGHT", "orange3"))
 			print("")
 			if grassconfirm == True:
-				print(cs("Grass Sword BOUGHT", 'chartreuse4'))
+				print(cs("Grass Sword BOUGHT", "chartreuse4"))
 			else:
-				print(cs("Grass Sword $50"))
+				print(cs("Grass Sword $50", "chartreuse4"))
 			print("")
 			if leafconfirm == True:
 				print(cs("Leaf Sword BOUGHT", "darkgoldenrod"))
@@ -455,6 +467,11 @@ def shop():
 			else:
 				print(cs("Maple Armor $585", "maroon"))
 			print("")
+			if obsidianconfirm == True:
+				print(cs("Obsidian Armor BOUGHT", "darkgrey"))
+			else:
+				print(cs("Obsidian Armor $750", "darkgrey"))
+			print("")
 			if soulconfirm == True:
 				print(cs("Soul Armor BOUGHT", "grey6"))
 			else:
@@ -546,6 +563,22 @@ def shop():
 						player["magic"] += 1
 						player["attack"] += 1
 						mapleconfirm = True
+			elif sloppy == "obsidian armor":
+				if obsidianconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 750:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 750
+						aincrease = 28
+						player["defense"] += aincrease
+						player["maxhp"] += 2
+						player["magic"] += 1
+						player["hp"] = player["maxhp"]
+						emeraldconfirm = True
 			elif sloppy == "soul armor":
 				if soulconfirm == True:
 					print("")
@@ -832,10 +865,12 @@ def shop():
 	
 
 def combat():
-	for x in range(0, 1000):
-		print("")
 	global enemy
 	global player
+	global money
+	global xp
+	for x in range(0, 1000):
+		print("")
 	if tutorial == False:
 		for x in range(0, 1000):
 			for x in range(0, 1000):
@@ -894,6 +929,7 @@ def combat():
 				print(cs("You died.", "red"))
 				exit()
 			elif enemy["hp"] <= 0:
+				enemy["hp"] = enemy["maxhp"]
 				break
 		print("")
 		print("You have won the battle.")

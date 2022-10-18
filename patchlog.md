@@ -32,6 +32,7 @@ Changes:
 
         Others...
 
+
 Update Aqua - 1.1.0
 
 Changes:
@@ -57,10 +58,32 @@ Changes:
         Coral Wand
 
         Water Wand
-
+ 
         Aqua Charm
 
-    
     A bunch of new step texts
 
     Extra money and xp are awarded at the end of a fight
+
+
+Flavor Mini-Update - 1.1.5
+
+Changes:
+
+    Bug Fixes
+
+        End of battle xp and money work now
+
+        Shop weapons menu works now
+
+        Monsters encountered more than once no longer show up as having 0 hp
+
+    1 new armor
+
+        Obsidian Armor
+
+    1 new monster
+
+        Zombie
+
+    12 new step texts

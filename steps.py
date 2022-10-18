@@ -7,8 +7,9 @@ shtep = 0
 
 def sheep():
     global shtep
+    global enemy
     
-    shtep = random.randint(1,170)
+    shtep = random.randint(1,200)
 
     if shtep == 1 or shtep == 2 or shtep == 43:
         data.enemy = data.rat
@@ -462,6 +463,83 @@ def sheep():
             data.shop()
     elif shtep == 168 or shtep == 169 or shtep == 170:
         jeep = "You dance randomly. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 171 or shtep == 172 or shtep == 173:
+        data.enemy = data.zombie
+        jeep = "Ah! It's a zombie! "
+        data.combat()
+    elif shtep == 174 or shtep == 175:
+        jeep = "Ew! You stepped in dog poop! "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 176 or shtep == 178 or shtep == 179:
+        jeep = "Why do I hear boss music? "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 180 or shtep == 181 or shtep == 185:
+        jeep = "You get pickpocketed by a shady figure named Randy. "
+        data.money -= 50
+        if data.money < 0:
+            data.money = 0
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 182 or shtep == 183 or shtep == 184:
+        jeep = "You run and run training for the fight against your self-confidence. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 186 or shtep == 187:
+        jeep = "Let's go! You murdered 2 civilians while trying to get a hot dog! "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 188 or shtep == 189 or shtep == 190:
+        jeep = "Beep boop, I am a robot. Oh, sorry, I was doing personal stuff. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 191 or shtep == 192:
+        jeep = "Do you ever feel, like a- oh? We'll get sued by Katy Perry if I keep singing? Ok. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 193 or shtep == 194 or shtep == 195:
+        jeep = "You play some Just Dance 2023 edition! "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 196 or shtep == 197:
+        jeep = "You see a poster and realise that the FBI is coming for you. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 198 or shtep == 199 or shtep == 200:
+        jeep = "Your pal Jimmy calls you and says something about how he's dying and you need to help him. But you hang up. "
         shlep = input(jeep)
         if shlep == "stats":
             data.stats()
