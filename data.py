@@ -42,6 +42,11 @@ iceconfirm = False
 coralconfirm = False
 waterconfirm = False
 obsidianconfirm = False
+fireconfirm = False
+emberconfirm = False
+blazeconfirm = False
+brimconfirm = False
+lavaconfirm = False
 
 player = {
 	"maxhp": 20,
@@ -130,6 +135,24 @@ salmon_school = {
 	"attack": 18,
 	"defense": 20,
 	"magic": 16,
+	"luck": 2
+}
+
+demon = {
+  	"maxhp": 25,
+	"hp": 25,
+	"attack": 30,
+	"defense": 23,
+	"magic": 25,
+	"luck": 1
+}
+
+lava_monster = {
+  	"maxhp": 27,
+	"hp": 27,
+	"attack": 20,
+	"defense": 20,
+	"magic": 10,
 	"luck": 2
 }
 
@@ -244,6 +267,11 @@ def shop():
 	global pineconeconfirm
 	global grandconfirm
 	global obsidianconfirm
+	global fireconfirm
+	global emberconfirm
+	global blazeconfirm
+	global lavaconfirm
+	global brimconfirm
 
 	for x in range(0, 1000):
 		print("")
@@ -322,6 +350,16 @@ def shop():
 			else:
 				print(cs("Titanium Sword $525", "lightgrey7"))
 			print("")
+			if fireconfirm == True:
+				print(cs("Fire Sword BOUGHT", "red2"))
+			else:
+				print(cs("Fire Sword $530", "red2"))
+			print("")
+			if emberconfirm == True:
+				print(cs("Ember Blade BOUGHT", "darkorange3"))
+			else:
+				print(cs("Ember Blade $550", "darkorange3"))
+			print("")
 			if holyconfirm == True:
 				print(cs("Holy Sword BOUGHT", "gold"))
 			else:
@@ -357,7 +395,7 @@ def shop():
 						wincrease = 7
 						player["attack"] += wincrease
 						player["magic"] += 3
-						grassconfirm = True
+						iceconfirm = True
 			if sloppy == "leaf sword":
 				if leafconfirm == True:
 					print("")
@@ -413,6 +451,34 @@ def shop():
 						wincrease = 19
 						player["attack"] += wincrease
 						titanconfirm = True
+			elif sloppy == "fire sword":
+				if fireconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 530:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 530
+						wincrease = 20
+						player["attack"] += wincrease
+						player["magic"] += 3
+						fireconfirm = True
+			elif sloppy == "ember blade":
+				if emberconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 550:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 550
+						wincrease = 21
+						player["attack"] += wincrease
+						player["magic"] += 5
+						emberconfirm = True
 			elif sloppy == "holy sword":
 				if holyconfirm == True:
 					print("")
@@ -457,10 +523,20 @@ def shop():
 			else:
 				print(cs("Chainmail $325", "grey7"))
 			print("")
+			if brimconfirm == True:
+				print(cs("Brimstone Armor BOUGHT", "salmon"))	
+			else:
+				print(cs("Brimstone Armor $375", "salmon"))
+			print("")
 			if emeraldconfirm == True:
 				print(cs("Emerald Armor BOUGHT", "seagreen3"))
 			else:
 				print(cs("Emerald Armor $420", "seagreen3"))
+			print("")
+			if lavaconfirm == True:
+				print(cs("Lava Armor BOUGHT", "darkred"))
+			else:
+				print(cs("Lava Armor $500", "darkred"))
 			print("")
 			if mapleconfirm == True:
 				print(cs("Maple Armor BOUGHT", "maroon"))
@@ -531,6 +607,20 @@ def shop():
 						aincrease = 10
 						player["defense"] += aincrease
 						chainconfirm = True
+			elif sloppy == "brimstone armor":
+				if brimconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 375:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 375
+						aincrease = 15
+						player["defense"] += aincrease
+						player["magic"] += 2
+						brimconfirm = True
 			elif sloppy == "emerald armor":
 				if emeraldconfirm == True:
 					print("")
@@ -546,6 +636,21 @@ def shop():
 						player["maxhp"] += 1
 						player["hp"] = player["maxhp"]
 						emeraldconfirm = True
+			elif sloppy == "lava armor":
+				if lavaconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 500:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 500
+						aincrease = 20
+						player["defense"] += aincrease
+						player["attack"] += 2
+						player["magic"] += 3
+						lavaconfirm = True
 			elif sloppy == "maple armor":
 				if mapleconfirm == True:
 					print("")
@@ -578,7 +683,7 @@ def shop():
 						player["maxhp"] += 2
 						player["magic"] += 1
 						player["hp"] = player["maxhp"]
-						emeraldconfirm = True
+						obsidianconfirm = True
 			elif sloppy == "soul armor":
 				if soulconfirm == True:
 					print("")
@@ -607,6 +712,11 @@ def shop():
 				print(cs("Basic Wand BOUGHT", "lightgoldenrod3"))
 			else:
 				print(cs("Basic Wand $35", "lightgoldenrod3"))
+			print("")
+			if blazeconfirm == True:
+				print(cs("Blaze Wand BOUGHT", 'red2'))
+			else:
+				print(cs("Blaze Wand $100", 'red2'))
 			print("")
 			if starconfirm == True:
 				print(cs("Star Wand BOUGHT", 'yellow2'))
@@ -662,6 +772,20 @@ def shop():
 						mincrease = 6
 						player["magic"] += mincrease
 						basicconfirm = True
+			if sloppy == "blaze wand":
+				if blazeconfirm == True:
+					print("")
+					print("Sorry, unfortunately, you have already purchased this item.")
+				else:
+					if money < 100:
+						print("")
+						print("Sorry you do not have enough money.")
+					else:
+						money -= 100
+						mincrease = 9
+						player["magic"] += mincrease
+						player["attack"] += 3
+						blazeconfirm = True
 			elif sloppy == "star wand":
 				if starconfirm == True:
 					print("")
@@ -731,7 +855,7 @@ def shop():
 						mincrease = 24
 						player["magic"] += mincrease
 						player["attack"] += 3
-						coralconfirm = True
+						waterconfirm = True
 			elif sloppy == "amethyst wand":
 				if amethystconfirm == True:
 					print("")
@@ -774,7 +898,7 @@ def shop():
 						mincrease = 31
 						player["magic"] += mincrease
 						player["maxhp"] += 6
-						holyconfirm = True
+						grandconfirm = True
 			else:
 				print("")
 				print("What do you mean?")
@@ -795,6 +919,8 @@ def shop():
 				print(cs("Glass Charm $400", "violet"))
 				print("")
 				print(cs("Aqua Charm $400", "blue"))
+				print("")
+				print(cs("Ignis Charm $400", "red3"))
 				print("")
 				sloppy = input("Choose you charm (no caps) ")
 			else:
@@ -847,6 +973,18 @@ def shop():
 						player["luck"] = 10
 					player["magic"] += 5
 					player["attack"] += 5
+					charmconfirm = True
+			elif sloppy == "ignis charm":
+				if money < 400:
+					print("Sorry you do not have enough money.")
+				else:
+					money -= 400
+					cincrease = 1
+					player["luck"] += cincrease
+					if player["luck"] < 10:
+						player["luck"] = 10
+					player["magic"] += 2
+					player["attack"] += 8
 					charmconfirm = True
 			else:
 				print("")

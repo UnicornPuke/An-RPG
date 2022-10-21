@@ -87,3 +87,30 @@ Changes:
         Zombie
 
     12 new step texts
+
+
+Update Ignis - 1.2.0
+
+Changes:
+
+    7 new shop items
+
+        Ignis Charm
+
+        Fire Sword
+
+        Ember Blade
+
+        Blaze Wand
+
+        Brimstone Armor
+
+        Lava Armor
+
+    2 new monsters
+
+        Lava Monster
+
+        Demon
+
+    A bunch of new step texts

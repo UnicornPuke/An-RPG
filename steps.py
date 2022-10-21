@@ -9,13 +9,12 @@ def sheep():
     global shtep
     global enemy
     
-    shtep = random.randint(1,200)
+    shtep = random.randint(1,250)
 
     if shtep == 1 or shtep == 2 or shtep == 43:
         data.enemy = data.rat
         input("Aaah! It's a rat, hope he doesn't cook some cheeses! ")
         data.combat()
-    
     elif shtep == 3 or shtep == 4 or shtep == 5 or shtep == 6 or shtep == 7:
         jeep = "You walk forward and literally nothing interesting happens. (Your life is boring!) "
         shlep = input(jeep)
@@ -23,7 +22,6 @@ def sheep():
             data.stats()
         if shlep == "shop":
             data.shop()
-    
     elif shtep == 8 or shtep == 42:
         jeep = "An old lady screams at you for some 'You killed my son' junk. "
         shlep = input(jeep)
@@ -540,6 +538,149 @@ def sheep():
             data.shop()
     elif shtep == 198 or shtep == 199 or shtep == 200:
         jeep = "Your pal Jimmy calls you and says something about how he's dying and you need to help him. But you hang up. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 201 or shtep == 202:
+        data.enemy = data.demon
+        input("Oh no! It's a demon, someone call an exorcist! ")
+        data.combat()
+    elif shtep == 203 or shtep == 204 or shtep == 205:
+        data.enemy = data.lava_monster
+        input("Hey Jerry! Some lava is alive! ")
+        data.combat()
+    elif shtep == 206 or shtep == 207:
+        jeep = "Your clothes catch on fire and you roll over. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 208 or shtep == 209 or shtep == 210:
+        jeep = "You walk up to a lava pit and start thinking of pushing someone in. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 211 or shtep == 212:
+        jeep = "You schedule a therapy session. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 213 or shtep == 214 or shtep == 215:
+        jeep = "Do you like potatoes, or do you like potatoes+, the new streaming service? "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 216 or shtep == 217:
+        jeep = "You find 100 dollars on the ground and 2 people steal 20 dollars each. How much money did you get? "
+        data.money += 60
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 218 or shtep == 219 or shtep == 220:
+        jeep = "You get burned. "
+        data.player["hp"] -= 4
+        if data.player["hp"] < 0:
+            print("")
+            print(cs("You died.", "red"))
+            exit()
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 221 or shtep == 222:
+        jeep = "Some polka players rickroll you with 12 accordions. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 223 or shtep == 224 or shtep == 225:
+        jeep = "Milk! That's it. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 226 or shtep == 227:
+        jeep = "You find a dragonfruit on the floor. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 228 or shtep == 229 or shtep == 230:
+        jeep = "You text Jimmy and he ghosts you. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 231 or shtep == 232:
+        jeep = "You do a TikTok dance and everyone around you collapses. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 233 or shtep == 234 or shtep == 235:
+        jeep = "A chicken crosses the road. Then gets run over, you are now traumatized. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 236 or shtep == 237:
+        jeep = "A bonfire is emitting smoke in a house. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 238 or shtep == 239 or shtep == 240:
+        jeep = "Hey! Don't think about breaking and entering. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 241 or shtep == 242:
+        jeep = "Someone jumps and farts at the same time. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 243 or shtep == 244 or shtep == 245:
+        jeep = "You eat some good cake, like REALLY good cake. "
+        data.player["hp"] += 5
+        if data.player["hp"] > data.player["maxhp"]:
+            data.player["hp"] = data.player["maxhp"]
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 246 or shtep == 247:
+        jeep = "It starts raining cats and dogs. Literally. "
+        shlep = input(jeep)
+        if shlep == "stats":
+            data.stats()
+        if shlep == "shop":
+            data.shop()
+    elif shtep == 248 or shtep == 249 or shtep == 250:
+        jeep = "You cry inside, and scream on the outside. "
         shlep = input(jeep)
         if shlep == "stats":
             data.stats()
